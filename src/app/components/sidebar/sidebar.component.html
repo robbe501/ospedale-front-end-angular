@@ -1,3 +1,8 @@
 <mat-list class="pt-[0px]">
-  <mat-list-item class="hover:bg-[#c4d1df] hover:border-l-8 hover:border-l-[#4d9cf8]" *ngFor="let item of items">{{item}}</mat-list-item>
+  <mat-list-item class="hover:bg-[#c4d1df] hover:border-l-8 hover:border-l-[#4d9cf8]"
+                 *ngFor="let dato of dati[0].info"
+                 routerLink="{{dato.route}}"
+                 >
+    {{dato.nome}}
+  </mat-list-item>
 </mat-list>

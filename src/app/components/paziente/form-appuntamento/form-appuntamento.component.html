@@ -1,0 +1,37 @@
+
+
+<div class=" w-5/12 mx-auto mt-5" *ngIf="!done">
+    <h1>Prenotazione</h1>
+    <mat-form-field class="example-full-width block">
+      <mat-label>Codice Fiscale</mat-label>
+      <input matInput placeholder="FFEFFE90T12G209S" value="" #cf>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width block">
+      <mat-label>Ricetta</mat-label>
+      <input matInput placeholder="175847586982345" value="" #ricetta>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width block">
+      <mat-label>Data</mat-label>
+      <input type="date" matInput placeholder="12/12/2023" value="" #data>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width block">
+      <mat-label>Orario</mat-label>
+      <input type="time" matInput placeholder="12:40" value="" #orario>
+    </mat-form-field>
+
+    <button mat-raised-button class="bg-[#3695eb] text-white w-full" (click)="postAppuntamento(cf.value, ricetta.value, data.value, orario.value)">Prenota</button>
+</div>
+
+<div *ngIf="done && !error">
+  Inserimento avvenuto
+</div>
+
+<div *ngIf="error">
+  Errore {{errorType}}
+</div>
+
+
+

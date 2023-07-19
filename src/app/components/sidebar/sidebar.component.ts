@@ -7,4 +7,24 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
   items = ["Prestazioni", "Appuntamenti", "Richieste"];
+
+  dati = [
+    {
+      user: "paziente",
+      info: [
+        {
+          nome: "Prestazioni",
+          route: "pazienti/prestazioni"
+        },
+        {
+          nome: "Appuntamenti",
+          route: "pazienti/appuntamenti"
+        },
+        {
+          nome: "Richieste",
+          route: "pazienti/richieste"
+        },
+      ]
+    }
+  ]
 }

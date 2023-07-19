@@ -11,13 +11,21 @@ import { PrestazioniPazienteComponent } from './components/paziente/prestazioni-
 import { PazienteHomeComponent } from './components/paziente/paziente-home/paziente-home.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import { FormAppuntamentoComponent } from './components/paziente/form-appuntamento/form-appuntamento.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { AppuntamentiPazienteComponent } from './components/paziente/appuntamenti-paziente/appuntamenti-paziente.component';
+import { FormRichiestaComponent } from './components/paziente/form-richiesta/form-richiesta.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     PrestazioniPazienteComponent,
-    PazienteHomeComponent
+    PazienteHomeComponent,
+    FormAppuntamentoComponent,
+    AppuntamentiPazienteComponent,
+    FormRichiestaComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +35,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbarModule,
     MatListModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
