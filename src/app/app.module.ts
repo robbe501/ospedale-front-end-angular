@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AppuntamentiPazienteComponent } from './components/paziente/appuntamenti-paziente/appuntamenti-paziente.component';
 import { FormRichiestaComponent } from './components/paziente/form-richiesta/form-richiesta.component';
+import { RichiesteComponent } from './components/common/richieste/richieste.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormRichiestaComponent } from './components/paziente/form-richiesta/for
     FormAppuntamentoComponent,
     AppuntamentiPazienteComponent,
     FormRichiestaComponent,
+    RichiesteComponent,
   ],
   imports: [
     BrowserModule,

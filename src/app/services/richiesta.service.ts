@@ -36,5 +36,14 @@ export class RichiestaService {
       }
       return response.status
   }
-
+  async getByPazienteId(pazienteId:number){
+    const response = await fetch(`${this.ENDPOINT}richieste/paziente/${pazienteId}`);
+    const json = await response.json();
+    return json.reverse()
+  }
+  async getByMedicoId(medicoId:number){
+    const response = await fetch(`${this.ENDPOINT}richieste/medico/${medicoId}`);
+    const json = await response.json();
+    return json.reverse()
+  }
 }
