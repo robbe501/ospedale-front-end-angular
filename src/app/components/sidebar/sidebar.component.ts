@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoggedUserDataService } from 'src/app/services/logged-user-data.service';
 
 @Component({
@@ -6,7 +7,9 @@ import { LoggedUserDataService } from 'src/app/services/logged-user-data.service
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnChanges{
+  @Input()
+  user = "paziente";
   items = ["Prestazioni", "Appuntamenti", "Richieste"];
 
   dati = [
@@ -41,7 +44,7 @@ export class SidebarComponent {
         },
       ]
 
-      constructor(private lud: LoggedUserDataService) {
+      constructor(private lud: LoggedUserDataService, private router: Router) {
         if(this.lud.tipologiaUtenteLoggato == "paziente") {
           this.dati = this.datiPaziente;
         }
@@ -49,5 +52,16 @@ export class SidebarComponent {
           this.dati = this.datiMedico;
         }
 
+      }
+
+      ngOnChanges() {
+        if(this.lud.tipologiaUtenteLoggato == "paziente") {
+          this.dati = this.datiPaziente;
+          this.router.navigate(['']);
+        }
+        else if (this.lud.tipologiaUtenteLoggato == "medico") {
+          this.dati = this.datiMedico;
+          this.router.navigate(['']);
+        }
       }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoggedUserDataService } from './services/logged-user-data.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = '07-angular-ospedale';
+
+  constructor(private lud: LoggedUserDataService) {
+
+  }
+
+  changeUser(user: string) {
+    this.lud.tipologiaUtenteLoggato = user;
+  }
 }

@@ -1,0 +1,26 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mx-auto mt-8 w-8/12 min-w-0">
+    <ng-container matColumnDef="vecchiaData">
+      <th mat-header-cell *matHeaderCellDef> Vecchia Data </th>
+      <td mat-cell *matCellDef="let element"> {{element.appuntamento.data}} </td>
+    </ng-container>
+    <ng-container matColumnDef="vecchioOrario">
+      <th mat-header-cell *matHeaderCellDef> Vecchio Orario </th>
+      <td mat-cell *matCellDef="let element"> {{element.appuntamento.orario}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nuovaData">
+      <th mat-header-cell *matHeaderCellDef> Nuova Data </th>
+      <td mat-cell *matCellDef="let element"> {{element.nuovaData}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nuovoOrario">
+      <th mat-header-cell *matHeaderCellDef> Nuovo Orario </th>
+      <td mat-cell *matCellDef="let element"> {{element.nuovoOrario}}</td>
+    </ng-container>
+    <ng-container matColumnDef="stato">
+      <th mat-header-cell *matHeaderCellDef> Stato</th>
+      <td mat-cell *matCellDef="let element">{{element.stato}}</td>
+
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row [ngClass]="{'bg-gray-100': isEven}" *matRowDef="let row; even as isEven; columns: displayedColumns; "></tr>
+  </table>

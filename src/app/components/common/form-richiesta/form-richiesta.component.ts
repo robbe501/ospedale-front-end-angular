@@ -12,10 +12,16 @@ export class FormRichiestaComponent {
   pazienteId!:number
   appuntamentoId!:number;
   medicoId!:number;
-  constructor(private richiestaService:RichiestaService, private route: ActivatedRoute, private loggedUser:LoggedUserDataService) {
+  constructor(private richiestaService:RichiestaService, private route: ActivatedRoute, private lud:LoggedUserDataService) {
     this.appuntamentoId = parseInt(this.route.snapshot.paramMap.get("appuntamentoId")!);
-    this.pazienteId = this.loggedUser.pazienteId
-    this.medicoId =parseInt(this.route.snapshot.queryParamMap.get("medicoId")!)
+    if(lud.tipologiaUtenteLoggato == 'paziente') {
+      this.pazienteId = this.lud.pazienteId
+      this.medicoId = parseInt(this.route.snapshot.queryParamMap.get("medicoId")!)
+    } else if (lud.tipologiaUtenteLoggato == 'medico') {
+      this.medicoId = this.lud.medicoId
+      this.pazienteId = parseInt(this.route.snapshot.queryParamMap.get("pazienteId")!)
+
+    }
   }
 
   async postRichiesta(newDate: string, newTime: string) {
@@ -29,6 +35,6 @@ export class FormRichiestaComponent {
     else
       this.done = true;
 */
-  } 
+  }
 
 }

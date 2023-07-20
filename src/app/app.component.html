@@ -1,11 +1,16 @@
 <div class="z-50 relative">
   <mat-toolbar class="shadow-lg h-[60px] bg-[#3695eb] " >
     <span class="text-white"><i class="fa-solid fa-house-medical mr-2"></i>Ospedale</span>
+      <select #user class="ml-3" (change)="changeUser(user.value)">
+        <option value="paziente">Paziente</option>
+        <option value="medico">Medico</option>
+        <option value="dipendente">Dipendente</option>
+      </select>
   </mat-toolbar>
 </div>
 <mat-drawer-container class="example-container h-full">
   <mat-drawer mode="side" opened class="bg-[#d7e5f5] w-2/12 min-w-[200px]">
-   <app-sidebar></app-sidebar>
+   <app-sidebar [user]="user.value"></app-sidebar>
   </mat-drawer>
   <mat-drawer-content class="p-2">
     <router-outlet></router-outlet>

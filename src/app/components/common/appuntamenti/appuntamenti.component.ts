@@ -25,5 +25,9 @@ export class AppuntamentiComponent {
     }
   }
 
+  getUser() {
+    return this.loggedUserData.tipologiaUtenteLoggato;
+  }
+
 
 }
