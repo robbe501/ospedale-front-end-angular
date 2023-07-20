@@ -1,10 +1,10 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mx-auto mt-8 w-8/12 min-w-0">
+<table mat-table [dataSource]="dataToFilter" class="mat-elevation-z8 mx-auto mt-8 w-8/12 min-w-0">
   <ng-container matColumnDef="tipologia">
     <th mat-header-cell *matHeaderCellDef> Tipologia </th>
     <td mat-cell *matCellDef="let element"> {{element.prestazione.tipologia}} </td>
   </ng-container>
   <ng-container matColumnDef="data">
-    <th mat-header-cell *matHeaderCellDef> Data </th>
+    <th mat-header-cell *matHeaderCellDef> Data <input *ngIf="getUser() == 'medico'" type="date" #data (change)="filtraData(data.value)"> </th>
     <td mat-cell *matCellDef="let element"> {{element.data}} </td>
   </ng-container>
   <ng-container matColumnDef="orario">
@@ -18,6 +18,18 @@
   <ng-container matColumnDef="paziente">
     <th mat-header-cell *matHeaderCellDef> Paziente </th>
     <td mat-cell *matCellDef="let element"> {{element.paziente.codiceFiscale}}</td>
+  </ng-container>
+  <ng-container matColumnDef="stato">
+    <th mat-header-cell *matHeaderCellDef> Stato </th>
+    <td mat-cell *matCellDef="let element"> {{element.stato}}</td>
+  </ng-container>
+  <ng-container matColumnDef="effettuato">
+    <th mat-header-cell *matHeaderCellDef> Effettuato </th>
+    <td mat-cell *matCellDef="let element">
+      <button [disabled]="element.stato == 'Effettuato'" mat-raised-button [ngClass]="{'bg-gray-300': element.stato == 'Effettuato', 'bg-[#3695eb]': element.stato == 'Prenotato'}" class=" text-white" (click)="cambiaStato('Effettuato', element.appuntamentoId)">
+        Conferma
+      </button>
+    </td>
   </ng-container>
   <ng-container matColumnDef="richiesta">
     <th mat-header-cell *matHeaderCellDef> Richiesta </th>

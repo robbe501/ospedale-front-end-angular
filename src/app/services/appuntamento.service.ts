@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PostAppuntamento } from '../interfaces/post-appuntamento';
 import { Time } from '@angular/common';
+import { PatchAppuntamento } from '../interfaces/patch-appuntamento';
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +52,31 @@ export class AppuntamentoService {
     const json = await response.json();
     return await json.reverse();
   }
+
+  async patch(stato: 'Effettuato' | 'Prenotato', appuntamentoId: number) {
+
+    var patchAppuntamento: PatchAppuntamento = {
+      appuntamentoId: appuntamentoId,
+      stato: stato
+    }
+
+
+    const requestOptions: RequestInit = {
+      method: 'PATCH',
+      mode: "cors",
+      body: JSON.stringify(patchAppuntamento),
+      headers: {
+          "Content-Type": "application/json"
+      }
+    };
+
+    const response = await fetch(`${this.ENDPOINT}appuntamenti`, requestOptions);
+      if(response.ok) {
+        const json = await response.json();
+        return json;
+      }
+      return response.status
+  }
+
 
 }
