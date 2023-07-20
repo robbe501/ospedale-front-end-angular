@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoggedUserDataService } from 'src/app/services/logged-user-data.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,8 +11,11 @@ export class SidebarComponent {
 
   dati = [
     {
-      user: "paziente",
-      info: [
+      nome: "",
+      route: ""
+    }
+  ]
+  datiPaziente = [
         {
           nome: "Prestazioni",
           route: "pazienti/prestazioni"
@@ -25,6 +29,25 @@ export class SidebarComponent {
           route: "pazienti/richieste"
         },
       ]
-    }
-  ]
+
+  datiMedico = [
+        {
+          nome: "Appuntamenti",
+          route: "medici/appuntamenti"
+        },
+        {
+          nome: "Richieste",
+          route: "medici/richieste"
+        },
+      ]
+
+      constructor(private lud: LoggedUserDataService) {
+        if(this.lud.tipologiaUtenteLoggato == "paziente") {
+          this.dati = this.datiPaziente;
+        }
+        else if (this.lud.tipologiaUtenteLoggato == "medico") {
+          this.dati = this.datiMedico;
+        }
+
+      }
 }

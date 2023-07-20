@@ -17,5 +17,6 @@ export interface GetAppuntamento{
   }
   paziente: {
     pazienteId: number
+    codiceFiscale: string
   }
 }

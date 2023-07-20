@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoggedUserDataService {
+  tipologiaUtenteLoggato = "paziente"
   pazienteId = 1;
+  medicoId = 1;
   constructor() { }
 }

@@ -40,8 +40,14 @@ export class AppuntamentoService {
       return response.status
   }
 
-  async getById(id: number){
-    const response = await fetch(`${this.ENDPOINT}appuntamenti/paziente/${id}`)
+  async getByPazienteId(pazienteId: number){
+    const response = await fetch(`${this.ENDPOINT}appuntamenti/paziente/${pazienteId}`)
+    const json = await response.json();
+    return await json.reverse();
+  }
+
+  async getByMedicoId(medicoId: number){
+    const response = await fetch(`${this.ENDPOINT}appuntamenti/medico/${medicoId}`)
     const json = await response.json();
     return await json.reverse();
   }

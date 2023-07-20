@@ -19,7 +19,7 @@ export class AppuntamentiPazienteComponent {
   constructor(private appuntamentoService: AppuntamentoService, private loggedUserData: LoggedUserDataService) {
   }
   async ngOnInit() {
-    this.dataSource = await this.appuntamentoService.getById(this.loggedUserData.pazienteId);
+    this.dataSource = await this.appuntamentoService.getByPazienteId(this.loggedUserData.pazienteId);
     console.log(this.dataSource)
 
   }
