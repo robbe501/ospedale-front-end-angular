@@ -13,9 +13,9 @@ export interface GetAppuntamento{
       nome: string,
       cognome: string,
       email: string,
+    }
   }
-}
-paziente: {
-  pazienteId: number
-}
+  paziente: {
+    pazienteId: number
+  }
 }
