@@ -1,1 +1,24 @@
-Form di invio richiesta per l'appuntamento {{toPrint}}
+
+<div class=" w-5/12 mx-auto mt-5" >
+    <h1>Richiesta</h1>
+    <mat-form-field class="example-full-width block">
+      <mat-label>Nuova Data</mat-label>
+      <input matInput type="date" value="" #newDate>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width block">
+      <mat-label>Nuovo Orario</mat-label>
+      <input matInput type="time" value="" #newTime>
+    </mat-form-field>
+
+
+    <button mat-raised-button class="bg-[#3695eb] text-white w-full" (click)="postRichiesta(newDate.value, newTime.value)">Prenota</button>
+</div>
+
+<!-- <div *ngIf="done && !error">
+  Inserimento avvenuto
+</div>
+
+<div *ngIf="error">
+  Errore {{errorType}}
+</div> -->

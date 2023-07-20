@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class PrestazioneService {
 
-  ENDPOINT: string = "http://localhost:8080/api/v1/";
+  ENDPOINT: string = "http://79.23.160.125:8080/api/v1/";
 
   constructor() { }
 

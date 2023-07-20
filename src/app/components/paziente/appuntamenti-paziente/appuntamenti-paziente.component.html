@@ -17,7 +17,7 @@
   </ng-container>
   <ng-container matColumnDef="richiesta">
     <th mat-header-cell *matHeaderCellDef> Richiesta </th>
-    <td mat-cell *matCellDef="let element"> <button mat-raised-button class="bg-[#3695eb] text-white" routerLink="modifica/{{element.appuntamentoId}}">Modifica</button> </td>
+    <td mat-cell *matCellDef="let element"> <button mat-raised-button class="bg-[#3695eb] text-white" routerLink="modifica/{{element.appuntamentoId}}" [queryParams]="{ medicoId: element.prestazione.medico.medicoId }">Modifica</button> </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -7,7 +7,7 @@ import { Time } from '@angular/common';
 })
 export class AppuntamentoService {
 
-  ENDPOINT: string = "http://localhost:8080/api/v1/";
+  ENDPOINT: string = "http://79.23.160.125:8080/api/v1/";
 
   constructor() { }
 
