@@ -1,0 +1,11 @@
+
+<div class=" w-5/12 mx-auto mt-5" >
+  <h1>Modifica Prestazione</h1>
+  <p class="mb-1">Nuovo medico</p>
+  <select #medico class="mb-2 w-full h-8 bg-[#d7e5f5] rounded">
+    <option *ngFor="let medico of medici" value="{{medico.medicoId}}">{{medico.nome + " " + medico.cognome}}</option>
+  </select>
+
+
+  <button mat-raised-button class="bg-[#3695eb] text-white w-full" (click)="patchMedico(medico.value)">Modifica Prestazione</button>
+</div>

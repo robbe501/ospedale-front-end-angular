@@ -4,7 +4,7 @@
     <td mat-cell *matCellDef="let element"> {{element.prestazione.tipologia}} </td>
   </ng-container>
   <ng-container matColumnDef="data">
-    <th mat-header-cell *matHeaderCellDef> Data <input *ngIf="getUser() == 'medico'" type="date" #data (change)="filtraData(data.value)"> </th>
+    <th mat-header-cell *matHeaderCellDef> Data <input *ngIf="getUser() != 'paziente'" type="date" #data (change)="filtraData(data.value)"> </th>
     <td mat-cell *matCellDef="let element"> {{element.data}} </td>
   </ng-container>
   <ng-container matColumnDef="orario">

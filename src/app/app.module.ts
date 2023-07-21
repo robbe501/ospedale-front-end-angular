@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PrestazioniPazienteComponent } from './components/paziente/prestazioni-paziente/prestazioni-paziente.component';
+import { PrestazioniComponent } from './components/common/prestazioni/prestazioni.component';
 import { PazienteHomeComponent } from './components/paziente/paziente-home/paziente-home.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,18 +18,22 @@ import { AppuntamentiPazienteComponent } from './components/paziente/appuntament
 import { FormRichiestaComponent } from './components/common/form-richiesta/form-richiesta.component';
 import { AppuntamentiComponent } from './components/common/appuntamenti/appuntamenti.component';
 import { RichiesteComponent } from './components/common/richieste/richieste.component';
+import { FormPrestazioneComponent } from './components/dipendente/form-prestazione/form-prestazione.component';
+import { MediciComponent } from './components/dipendente/medici/medici.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    PrestazioniPazienteComponent,
+    PrestazioniComponent,
     PazienteHomeComponent,
     FormAppuntamentoComponent,
     AppuntamentiPazienteComponent,
     FormRichiestaComponent,
     AppuntamentiComponent,
     RichiesteComponent,
+    FormPrestazioneComponent,
+    MediciComponent,
   ],
   imports: [
     BrowserModule,

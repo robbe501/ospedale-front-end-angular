@@ -28,6 +28,10 @@ export class AppuntamentiComponent {
       this.dataSource = await this.appuntamentoService.getByMedicoId(this.loggedUserData.medicoId);
       this.displayedColumns = ['tipologia', 'data', 'orario', 'paziente', 'stato', 'richiesta', 'effettuato'];
     }
+    else if (this.loggedUserData.tipologiaUtenteLoggato == 'dipendente') {
+      this.dataSource = await this.appuntamentoService.getByMedicoId(this.loggedUserData.medicoId);
+      this.displayedColumns = ['tipologia', 'data', 'orario', 'medico', 'paziente', 'stato'];
+    }
     this.dataToFilter = this.dataSource;
   }
 

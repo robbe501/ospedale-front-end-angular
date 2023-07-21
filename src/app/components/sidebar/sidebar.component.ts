@@ -44,12 +44,34 @@ export class SidebarComponent implements OnChanges{
         },
       ]
 
+    datidDipendente = [
+        {
+          nome: "Prestazioni",
+          route: "dipendenti/prestazioni"
+        },
+        {
+          nome: "Appuntamenti",
+          route: "dipendenti/appuntamenti"
+        },
+        {
+          nome: "Richieste",
+          route: "dipendenti/richieste"
+        },
+        {
+          nome: "Medici",
+          route: "dipendenti/medici"
+        },
+      ]
+
       constructor(private lud: LoggedUserDataService, private router: Router) {
         if(this.lud.tipologiaUtenteLoggato == "paziente") {
           this.dati = this.datiPaziente;
         }
         else if (this.lud.tipologiaUtenteLoggato == "medico") {
           this.dati = this.datiMedico;
+        }
+        else if (this.lud.tipologiaUtenteLoggato == "dipendente") {
+          this.dati = this.datidDipendente;
         }
 
       }
@@ -61,6 +83,10 @@ export class SidebarComponent implements OnChanges{
         }
         else if (this.lud.tipologiaUtenteLoggato == "medico") {
           this.dati = this.datiMedico;
+          this.router.navigate(['']);
+        }
+        else if (this.lud.tipologiaUtenteLoggato == "dipendente") {
+          this.dati = this.datidDipendente;
           this.router.navigate(['']);
         }
       }
