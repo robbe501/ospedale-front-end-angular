@@ -17,7 +17,7 @@ export class AppuntamentoService {
     var postAppuntamento: PostAppuntamento = {
       codiceFiscale: cf,
       ricetta: ricetta,
-      stato: "attesa",
+      stato: "Attesa",
       data: new Date(data),
       orario: orario + ":00",
       prestazioneId: prestazioneId,

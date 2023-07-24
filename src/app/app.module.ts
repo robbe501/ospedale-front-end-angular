@@ -18,10 +18,11 @@ import { AppuntamentiPazienteComponent } from './components/paziente/appuntament
 import { FormRichiestaComponent } from './components/common/form-richiesta/form-richiesta.component';
 import { AppuntamentiComponent } from './components/common/appuntamenti/appuntamenti.component';
 import { RichiesteComponent } from './components/common/richieste/richieste.component';
-import { FormPrestazioneComponent } from './components/dipendente/form-prestazione/form-prestazione.component';
+import { FormPatchPrestazioneComponent } from './components/dipendente/form-patch-prestazione/form-patch-prestazione.component';
 import { MediciComponent } from './components/dipendente/medici/medici.component';
 import { HomeComponent } from './components/common/home/home.component';
-
+import { FormInsertPrestazioneComponent } from './components/dipendente/form-insert-prestazione/form-insert-prestazione.component';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,9 +34,10 @@ import { HomeComponent } from './components/common/home/home.component';
     FormRichiestaComponent,
     AppuntamentiComponent,
     RichiesteComponent,
-    FormPrestazioneComponent,
+    FormPatchPrestazioneComponent,
     MediciComponent,
     HomeComponent,
+    FormInsertPrestazioneComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { HomeComponent } from './components/common/home/home.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

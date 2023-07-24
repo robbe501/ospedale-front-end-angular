@@ -1,6 +1,11 @@
-
-
-
+<div class="mx-auto mt-8 w-8/12">
+  <h1>
+    Lista Prestazioni
+  </h1>
+</div>
+<div class="mt-8 mx-auto w-8/12">
+  <button *ngIf="getUser() == 'dipendente'" mat-raised-button class="bg-[#3695eb] text-white" routerLink="inserisci">Inserisci Prestazione</button>
+</div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mx-auto mt-8 w-8/12 min-w-0">
   <ng-container matColumnDef="medico">
     <th mat-header-cell *matHeaderCellDef> Medico </th>

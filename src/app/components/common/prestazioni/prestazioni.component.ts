@@ -27,7 +27,9 @@ export class PrestazioniComponent implements OnInit{
     } else if(this.lud.tipologiaUtenteLoggato == 'dipendente') {
       this.displayedColumns = ['medico', 'tipologia', 'modifica'];
     }
+  }
 
-
+  getUser() {
+    return this.lud.tipologiaUtenteLoggato;
   }
 }
