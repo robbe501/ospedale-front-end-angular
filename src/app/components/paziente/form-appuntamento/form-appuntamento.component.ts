@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppuntamentoService } from 'src/app/services/appuntamento.service';
 import { LoggedUserDataService } from 'src/app/services/logged-user-data.service';
 
@@ -13,20 +13,13 @@ done = false;
 error = false;
 errorType: number = 0;
 
-  constructor(private appuntamentoService: AppuntamentoService, private route: ActivatedRoute, private lud: LoggedUserDataService) {
+  constructor(private appuntamentoService: AppuntamentoService, private route: ActivatedRoute, private lud: LoggedUserDataService, private router: Router) {
 
   }
 
   async postAppuntamento(cf: string, ricetta: string, data: string, orario: string) {
     var result = await this.appuntamentoService.post(cf, ricetta, data, orario, parseInt(this.route.snapshot.paramMap.get('prestazioneId')!), this.lud.pazienteId)
-
-    if(typeof result == "number"){
-      this.done = true
-      this.error = true
-      this.errorType = result
-    }
-    else
-      this.done = true;
+    this.router.navigate(['/pazienti/appuntamenti'])
 
   }
 

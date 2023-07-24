@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoggedUserDataService } from 'src/app/services/logged-user-data.service';
 import { RichiestaService } from 'src/app/services/richiesta.service';
 
@@ -12,7 +12,7 @@ export class FormRichiestaComponent {
   pazienteId!:number
   appuntamentoId!:number;
   medicoId!:number;
-  constructor(private richiestaService:RichiestaService, private route: ActivatedRoute, private lud:LoggedUserDataService) {
+  constructor(private richiestaService:RichiestaService, private route: ActivatedRoute, private lud:LoggedUserDataService, private router: Router) {
     this.appuntamentoId = parseInt(this.route.snapshot.paramMap.get("appuntamentoId")!);
     if(lud.tipologiaUtenteLoggato == 'paziente') {
       this.pazienteId = this.lud.pazienteId
@@ -26,15 +26,12 @@ export class FormRichiestaComponent {
 
   async postRichiesta(newDate: string, newTime: string) {
     var result = await this.richiestaService.post(newDate, newTime, this.pazienteId, this.medicoId, this.appuntamentoId)
+    if(this.lud.tipologiaUtenteLoggato == 'paziente') {
+      this.router.navigate(['/pazienti/richieste']);
+    } else if (this.lud.tipologiaUtenteLoggato == 'medico') {
+      this.router.navigate(['/medici/richieste']);
 
-    /* if(typeof result == "number"){
-      this.done = true
-      this.error = true
-      this.errorType = result
     }
-    else
-      this.done = true;
-*/
   }
 
 }

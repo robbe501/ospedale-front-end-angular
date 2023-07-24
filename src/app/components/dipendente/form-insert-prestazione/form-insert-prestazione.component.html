@@ -1,0 +1,17 @@
+<div class=" w-5/12 mx-auto mt-5" >
+  <h1>Inserisci una nuova prestazione</h1>
+  <mat-form-field class="example-full-width block">
+    <mat-label>Tipologia</mat-label>
+    <input matInput value="" #tipologia>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width block">
+    <mat-label>Medico</mat-label>
+    <mat-select #medico>
+      <mat-option *ngFor="let medico of medici" value="{{medico.medicoId}}">{{ medico.nome + " " + medico.cognome }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <button mat-raised-button class="bg-[#3695eb] text-white w-full" (click)="inserisciPrestazione(tipologia.value, medico.value)">Inserisci</button>
+</div>

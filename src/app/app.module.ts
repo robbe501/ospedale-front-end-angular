@@ -18,11 +18,14 @@ import { AppuntamentiPazienteComponent } from './components/paziente/appuntament
 import { FormRichiestaComponent } from './components/common/form-richiesta/form-richiesta.component';
 import { AppuntamentiComponent } from './components/common/appuntamenti/appuntamenti.component';
 import { RichiesteComponent } from './components/common/richieste/richieste.component';
-import { FormPrestazioneComponent } from './components/dipendente/form-prestazione/form-prestazione.component';
+import { FormPatchPrestazioneComponent } from './components/dipendente/form-patch-prestazione/form-patch-prestazione.component';
 import { MediciComponent } from './components/dipendente/medici/medici.component';
 import { HomeComponent } from './components/common/home/home.component';
+import { FormInsertPrestazioneComponent } from './components/dipendente/form-insert-prestazione/form-insert-prestazione.component';
+import { MatSelectModule } from '@angular/material/select';
 import { FormInsertMedicoComponent } from './components/dipendente/form-insert-medico/form-insert-medico.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,9 +37,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     FormRichiestaComponent,
     AppuntamentiComponent,
     RichiesteComponent,
-    FormPrestazioneComponent,
+    FormPatchPrestazioneComponent,
     MediciComponent,
     HomeComponent,
+    FormInsertPrestazioneComponent,
     FormInsertMedicoComponent,
   ],
   imports: [
@@ -50,6 +54,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     MatCheckboxModule,
   ],
   providers: [],

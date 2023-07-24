@@ -6,10 +6,12 @@ import { FormAppuntamentoComponent } from './components/paziente/form-appuntamen
 import { FormRichiestaComponent } from './components/common/form-richiesta/form-richiesta.component';
 import { AppuntamentiComponent } from './components/common/appuntamenti/appuntamenti.component';
 import { RichiesteComponent } from './components/common/richieste/richieste.component';
-import { FormPrestazioneComponent } from './components/dipendente/form-prestazione/form-prestazione.component';
+import { FormPatchPrestazioneComponent } from './components/dipendente/form-patch-prestazione/form-patch-prestazione.component';
 import { MediciComponent } from './components/dipendente/medici/medici.component';
 import { HomeComponent } from './components/common/home/home.component';
+import { FormInsertPrestazioneComponent } from './components/dipendente/form-insert-prestazione/form-insert-prestazione.component';
 import { FormInsertMedicoComponent } from './components/dipendente/form-insert-medico/form-insert-medico.component';
+
 
 const routes: Routes = [
   { path: 'pazienti', component: PazienteHomeComponent },
@@ -23,7 +25,8 @@ const routes: Routes = [
   { path: 'medici/appuntamenti/modifica/:appuntamentoId', component: FormRichiestaComponent},
   { path: 'dipendenti/appuntamenti', component: AppuntamentiComponent},
   { path: 'dipendenti/prestazioni', component: PrestazioniComponent},
-  { path: 'dipendenti/prestazioni/modifica/:prestazioneId', component: FormPrestazioneComponent},
+  { path: 'dipendenti/prestazioni/inserisci', component: FormInsertPrestazioneComponent},
+  { path: 'dipendenti/prestazioni/modifica/:prestazioneId', component: FormPatchPrestazioneComponent},
   { path: 'dipendenti/medici', component: MediciComponent},
   { path: 'dipendenti/richieste', component: RichiesteComponent},
   { path: 'dipendenti/medici/inserisci', component: FormInsertMedicoComponent},

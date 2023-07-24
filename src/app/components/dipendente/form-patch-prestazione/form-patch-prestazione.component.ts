@@ -6,11 +6,11 @@ import { MedicoService } from 'src/app/services/medico.service';
 import { PrestazioneService } from 'src/app/services/prestazione.service';
 
 @Component({
-  selector: 'app-form-prestazione',
-  templateUrl: './form-prestazione.component.html',
-  styleUrls: ['./form-prestazione.component.css']
+  selector: 'app-form-patch-prestazione',
+  templateUrl: './form-patch-prestazione.component.html',
+  styleUrls: ['./form-patch-prestazione.component.css']
 })
-export class FormPrestazioneComponent implements OnInit{
+export class FormPatchPrestazioneComponent implements OnInit{
   prestazioni: GetPrestazione[] = [];
   medici: GetMedico[] = [];
 
