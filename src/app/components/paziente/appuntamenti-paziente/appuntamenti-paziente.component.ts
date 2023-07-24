@@ -20,7 +20,6 @@ export class AppuntamentiPazienteComponent {
   }
   async ngOnInit() {
     this.dataSource = await this.appuntamentoService.getByPazienteId(this.loggedUserData.pazienteId);
-    console.log(this.dataSource)
 
   }
 

@@ -23,7 +23,7 @@
 
   <ng-container matColumnDef="licenzia">
     <th mat-header-cell *matHeaderCellDef> Licenzia </th>
-    <td mat-cell *matCellDef="let element"> <button mat-raised-button class="bg-[#3695eb] text-white">Licenzia</button>
+    <td mat-cell *matCellDef="let element"> <button mat-raised-button class="bg-[#3695eb] text-white" (click)="licenzia(element.medicoId)">Licenzia</button>
   </td>
   </ng-container>
 

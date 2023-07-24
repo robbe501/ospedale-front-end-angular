@@ -19,10 +19,17 @@ export class MediciComponent {
 
   async ngOnInit() {
     this.dataSource = await this.medicoService.get();
-    console.log(this.dataSource);
   }
 
   async cambiaAbilitato(medicoId: string, abilitato: EventTarget) {
     await this.medicoService.patch(parseInt(medicoId), (abilitato as HTMLInputElement).checked);
+  }
+
+  async licenzia(medicoId: string) {
+    try {
+      await this.medicoService.delete(parseInt(medicoId));
+    } catch (error) {
+    }
+    this.dataSource = await this.medicoService.get();
   }
 }

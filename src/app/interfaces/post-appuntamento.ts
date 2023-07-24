@@ -6,5 +6,6 @@ export interface PostAppuntamento {
   stato: string,
   data: Date,
   orario: string,
-  prestazioneId: number
+  prestazioneId: number,
+  pazienteId: number
 }

@@ -8,6 +8,7 @@ import { AppuntamentiComponent } from './components/common/appuntamenti/appuntam
 import { RichiesteComponent } from './components/common/richieste/richieste.component';
 import { FormPrestazioneComponent } from './components/dipendente/form-prestazione/form-prestazione.component';
 import { MediciComponent } from './components/dipendente/medici/medici.component';
+import { HomeComponent } from './components/common/home/home.component';
 
 const routes: Routes = [
   { path: 'pazienti', component: PazienteHomeComponent },
@@ -23,6 +24,8 @@ const routes: Routes = [
   { path: 'dipendenti/prestazioni', component: PrestazioniComponent},
   { path: 'dipendenti/prestazioni/modifica/:prestazioneId', component: FormPrestazioneComponent},
   { path: 'dipendenti/medici', component: MediciComponent},
+  { path: 'dipendenti/richieste', component: RichiesteComponent},
+  { path: '', component: HomeComponent},
 
 ];
 

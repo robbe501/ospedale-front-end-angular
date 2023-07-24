@@ -20,6 +20,7 @@ import { AppuntamentiComponent } from './components/common/appuntamenti/appuntam
 import { RichiesteComponent } from './components/common/richieste/richieste.component';
 import { FormPrestazioneComponent } from './components/dipendente/form-prestazione/form-prestazione.component';
 import { MediciComponent } from './components/dipendente/medici/medici.component';
+import { HomeComponent } from './components/common/home/home.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MediciComponent } from './components/dipendente/medici/medici.component
     RichiesteComponent,
     FormPrestazioneComponent,
     MediciComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

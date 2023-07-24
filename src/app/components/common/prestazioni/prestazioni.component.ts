@@ -21,7 +21,6 @@ export class PrestazioniComponent implements OnInit{
   }
   async ngOnInit() {
     this.dataSource = await this.prestazioneService.get();
-    console.log(this.dataSource)
 
     if(this.lud.tipologiaUtenteLoggato == 'paziente'){
       this.displayedColumns = ['medico', 'tipologia', 'prenota'];

@@ -8,11 +8,11 @@ import { PatchAppuntamento } from '../interfaces/patch-appuntamento';
 })
 export class AppuntamentoService {
 
-  ENDPOINT: string = "http://79.23.160.125:8080/api/v1/";
+  ENDPOINT: string = "http://localhost:8080/api/v1/";
 
   constructor() { }
 
-  async post(cf: string, ricetta: string, data: string, orario: string, prestazioneId: number) {
+  async post(cf: string, ricetta: string, data: string, orario: string, prestazioneId: number, pazienteId: number) {
 
     var postAppuntamento: PostAppuntamento = {
       codiceFiscale: cf,
@@ -20,9 +20,9 @@ export class AppuntamentoService {
       stato: "attesa",
       data: new Date(data),
       orario: orario + ":00",
-      prestazioneId: prestazioneId
+      prestazioneId: prestazioneId,
+      pazienteId: pazienteId
     }
-
 
     const requestOptions: RequestInit = {
       method: 'POST',

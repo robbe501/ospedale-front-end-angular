@@ -7,7 +7,7 @@ import { PatchMedico } from '../interfaces/patch-medico';
 })
 export class MedicoService {
 
-  ENDPOINT: string = "http://79.23.160.125:8080/api/v1/";
+  ENDPOINT: string = "http://localhost:8080/api/v1/";
 
   constructor() { }
 
@@ -47,5 +47,24 @@ export class MedicoService {
       }
       return response.status
   }
+
+  async delete(medicoId: number) {
+    const requestOptions: RequestInit = {
+      method: 'DELETE',
+      mode: "cors",
+      body: JSON.stringify("{}"),
+      headers: {
+          "Content-Type": "application/json"
+      }
+    };
+
+    const response = await fetch(`${this.ENDPOINT}medici/${medicoId}`, requestOptions);
+      if(response.ok) {
+        const json = await response.json();
+        return json;
+      }
+      return response.status
+  }
+
 
 }

@@ -52,4 +52,8 @@ export class AppuntamentiComponent {
       this.dataToFilter = this.dataSource
     }
   }
+
+  controllaData(data: string) {
+    return new Date(data) >= new Date()
+  }
 }
