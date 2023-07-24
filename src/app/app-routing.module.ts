@@ -10,6 +10,8 @@ import { FormPatchPrestazioneComponent } from './components/dipendente/form-patc
 import { MediciComponent } from './components/dipendente/medici/medici.component';
 import { HomeComponent } from './components/common/home/home.component';
 import { FormInsertPrestazioneComponent } from './components/dipendente/form-insert-prestazione/form-insert-prestazione.component';
+import { FormInsertMedicoComponent } from './components/dipendente/form-insert-medico/form-insert-medico.component';
+
 
 const routes: Routes = [
   { path: 'pazienti', component: PazienteHomeComponent },
@@ -27,6 +29,7 @@ const routes: Routes = [
   { path: 'dipendenti/prestazioni/modifica/:prestazioneId', component: FormPatchPrestazioneComponent},
   { path: 'dipendenti/medici', component: MediciComponent},
   { path: 'dipendenti/richieste', component: RichiesteComponent},
+  { path: 'dipendenti/medici/inserisci', component: FormInsertMedicoComponent},
   { path: '', component: HomeComponent},
 
 ];

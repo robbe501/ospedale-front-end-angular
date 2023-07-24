@@ -7,7 +7,7 @@ import { PostPrestazione } from '../interfaces/post-prestazione';
 })
 export class PrestazioneService {
 
-  ENDPOINT: string = "http://localhost:8080/api/v1/";
+  ENDPOINT: string = "http://87.20.32.143:8080/api/v1/";
 
   constructor() { }
 

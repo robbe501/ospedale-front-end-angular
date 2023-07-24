@@ -23,6 +23,9 @@ import { MediciComponent } from './components/dipendente/medici/medici.component
 import { HomeComponent } from './components/common/home/home.component';
 import { FormInsertPrestazioneComponent } from './components/dipendente/form-insert-prestazione/form-insert-prestazione.component';
 import { MatSelectModule } from '@angular/material/select';
+import { FormInsertMedicoComponent } from './components/dipendente/form-insert-medico/form-insert-medico.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +41,7 @@ import { MatSelectModule } from '@angular/material/select';
     MediciComponent,
     HomeComponent,
     FormInsertPrestazioneComponent,
+    FormInsertMedicoComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
