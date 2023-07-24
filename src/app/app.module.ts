@@ -21,7 +21,8 @@ import { RichiesteComponent } from './components/common/richieste/richieste.comp
 import { FormPrestazioneComponent } from './components/dipendente/form-prestazione/form-prestazione.component';
 import { MediciComponent } from './components/dipendente/medici/medici.component';
 import { HomeComponent } from './components/common/home/home.component';
-
+import { FormInsertMedicoComponent } from './components/dipendente/form-insert-medico/form-insert-medico.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { HomeComponent } from './components/common/home/home.component';
     FormPrestazioneComponent,
     MediciComponent,
     HomeComponent,
+    FormInsertMedicoComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { HomeComponent } from './components/common/home/home.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

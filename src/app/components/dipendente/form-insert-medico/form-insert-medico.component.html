@@ -1,0 +1,20 @@
+
+<div class=" w-5/12 mx-auto mt-5" >
+    <h1>Medico</h1>
+    <mat-form-field class="example-full-width block">
+      <mat-label>Nome</mat-label>
+      <input matInput type="text" value="" #name>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width block">
+      <mat-label>Cognome</mat-label>
+      <input matInput type="text" value="" #lastName>
+    </mat-form-field>
+    <mat-form-field class="example-full-width block">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" value="" #email>
+    </mat-form-field>
+   
+    <mat-checkbox  name="abilitato" id="" #abilitato>Abilitato</mat-checkbox>
+    <br>
+    <button mat-raised-button class="bg-[#3695eb] text-white" (click)="inserisciMedico(name.value, lastName.value, email.value, abilitato.checked)">Inserisci Medico</button>
