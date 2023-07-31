@@ -16,11 +16,11 @@ export class RichiesteComponent {
   async ngOnInit() {
     if(this.lud.tipologiaUtenteLoggato == 'paziente'){
       this.displayedColumns = ['vecchiaData', 'vecchioOrario', 'nuovaData', 'nuovoOrario', 'stato']
-      this.dataSource = await this.richiestaService.getByPazienteId(this.lud.pazienteId);
+      this.dataSource = await this.richiestaService.getByPazienteId(this.lud.utenteId);
     }
     else if(this.lud.tipologiaUtenteLoggato == 'medico'){
       this.displayedColumns = ['vecchiaData', 'vecchioOrario', 'nuovaData', 'nuovoOrario', 'stato']
-      this.dataSource = await this.richiestaService.getByMedicoId(this.lud.medicoId);
+      this.dataSource = await this.richiestaService.getByMedicoId(this.lud.utenteId);
     }
     else if(this.lud.tipologiaUtenteLoggato == 'dipendente'){
       this.displayedColumns = ['vecchiaData', 'vecchioOrario', 'nuovaData', 'nuovoOrario', 'stato', 'accetta', 'rifiuta']

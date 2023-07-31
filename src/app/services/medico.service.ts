@@ -7,7 +7,7 @@ import { PostMedico } from '../interfaces/post-medico';
 })
 export class MedicoService {
 
-  ENDPOINT: string = "http://87.20.32.143:8080/api/v1/";
+  ENDPOINT: string = "http://localhost:8080/api/v1/";
 
   constructor() { }
 

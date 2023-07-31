@@ -13,30 +13,30 @@ export class AppuntamentiComponent {
   dataSource: GetAppuntamento[] = [];
   dataToFilter: GetAppuntamento[] = []
 
-  constructor(private appuntamentoService: AppuntamentoService, private loggedUserData: LoggedUserDataService) {
+  constructor(private appuntamentoService: AppuntamentoService, private lud: LoggedUserDataService) {
   }
   async ngOnInit() {
     this.loadData();
   }
 
   async loadData() {
-    if(this.loggedUserData.tipologiaUtenteLoggato == 'paziente') {
-      this.dataSource = await this.appuntamentoService.getByPazienteId(this.loggedUserData.pazienteId);
+    if(this.lud.tipologiaUtenteLoggato == 'paziente') {
+      this.dataSource = await this.appuntamentoService.getByPazienteId(this.lud.utenteId);
       this.displayedColumns = ['tipologia', 'data', 'orario', 'medico', 'stato', 'richiesta'];
     }
-    else if (this.loggedUserData.tipologiaUtenteLoggato == 'medico') {
-      this.dataSource = await this.appuntamentoService.getByMedicoId(this.loggedUserData.medicoId);
+    else if (this.lud.tipologiaUtenteLoggato == 'medico') {
+      this.dataSource = await this.appuntamentoService.getByMedicoId(this.lud.utenteId);
       this.displayedColumns = ['tipologia', 'data', 'orario', 'paziente', 'stato', 'richiesta', 'effettuato'];
     }
-    else if (this.loggedUserData.tipologiaUtenteLoggato == 'dipendente') {
-      this.dataSource = await this.appuntamentoService.getByMedicoId(this.loggedUserData.medicoId);
+    else if (this.lud.tipologiaUtenteLoggato == 'dipendente') {
+      this.dataSource = await this.appuntamentoService.getByMedicoId(this.lud.utenteId);
       this.displayedColumns = ['tipologia', 'data', 'orario', 'medico', 'paziente', 'stato'];
     }
     this.dataToFilter = this.dataSource;
   }
 
   getUser() {
-    return this.loggedUserData.tipologiaUtenteLoggato;
+    return this.lud.tipologiaUtenteLoggato;
   }
 
   async cambiaStato(stato: 'Effettuato' | 'Prenotato', appuntamentoId: number) {

@@ -16,10 +16,10 @@ export class AppuntamentiPazienteComponent {
   displayedColumns: string[] = ['tipologia', 'data', 'orario', 'medico', 'richiesta'];
   dataSource: GetAppuntamento[] = [];
 
-  constructor(private appuntamentoService: AppuntamentoService, private loggedUserData: LoggedUserDataService) {
+  constructor(private appuntamentoService: AppuntamentoService, private lud: LoggedUserDataService) {
   }
   async ngOnInit() {
-    this.dataSource = await this.appuntamentoService.getByPazienteId(this.loggedUserData.pazienteId);
+    this.dataSource = await this.appuntamentoService.getByPazienteId(this.lud.utenteId);
 
   }
 

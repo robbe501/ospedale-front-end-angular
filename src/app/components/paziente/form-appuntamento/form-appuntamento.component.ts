@@ -18,7 +18,7 @@ errorType: number = 0;
   }
 
   async postAppuntamento(cf: string, ricetta: string, data: string, orario: string) {
-    var result = await this.appuntamentoService.post(cf, ricetta, data, orario, parseInt(this.route.snapshot.paramMap.get('prestazioneId')!), this.lud.pazienteId)
+    var result = await this.appuntamentoService.post(cf, ricetta, data, orario, parseInt(this.route.snapshot.paramMap.get('prestazioneId')!), this.lud.utenteId)
     this.router.navigate(['/pazienti/appuntamenti'])
 
   }

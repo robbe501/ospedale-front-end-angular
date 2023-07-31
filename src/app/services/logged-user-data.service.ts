@@ -5,7 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class LoggedUserDataService {
   tipologiaUtenteLoggato = "paziente"
-  pazienteId = 1;
-  medicoId = 1;
+  utenteId = 1;
   constructor() { }
+
+  hasRole(role: string): boolean {
+    return role == this.tipologiaUtenteLoggato;
+  }
 }

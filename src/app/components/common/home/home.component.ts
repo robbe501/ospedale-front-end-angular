@@ -13,11 +13,11 @@ export class HomeComponent {
   constructor(private lud: LoggedUserDataService) {
     if(lud.tipologiaUtenteLoggato == "paziente"){
       this.tipoUtente = "paziente";
-      this.idUtente = lud.pazienteId;
+      this.idUtente = lud.utenteId;
     }
     else if(lud.tipologiaUtenteLoggato == "medico"){
           this.tipoUtente = "medico";
-          this.idUtente = lud.medicoId;
+          this.idUtente = lud.utenteId;
     }
     else if(lud.tipologiaUtenteLoggato == "dipendente"){
               this.tipoUtente = "dipendente";

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { GetMedico } from 'src/app/interfaces/get-medico';
-import { LoggedUserDataService } from 'src/app/services/logged-user-data.service';
 import { MedicoService } from 'src/app/services/medico.service';
 
 @Component({

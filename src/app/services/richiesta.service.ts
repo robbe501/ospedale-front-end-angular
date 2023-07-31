@@ -6,7 +6,7 @@ import { PatchRichiesta } from '../interfaces/patch-richiesta';
   providedIn: 'root'
 })
 export class RichiestaService {
-  ENDPOINT: string = "http://87.20.32.143:8080/api/v1/";
+  ENDPOINT: string = "http://localhost:8080/api/v1/";
 
   constructor() { }
   async post(nuovaData: string, nuovoOrario: string, pazienteId: number, medicoId: number, appuntamentoId:number) {

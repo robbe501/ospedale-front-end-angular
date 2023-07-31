@@ -15,10 +15,10 @@ export class FormRichiestaComponent {
   constructor(private richiestaService:RichiestaService, private route: ActivatedRoute, private lud:LoggedUserDataService, private router: Router) {
     this.appuntamentoId = parseInt(this.route.snapshot.paramMap.get("appuntamentoId")!);
     if(lud.tipologiaUtenteLoggato == 'paziente') {
-      this.pazienteId = this.lud.pazienteId
+      this.pazienteId = this.lud.utenteId
       this.medicoId = parseInt(this.route.snapshot.queryParamMap.get("medicoId")!)
     } else if (lud.tipologiaUtenteLoggato == 'medico') {
-      this.medicoId = this.lud.medicoId
+      this.medicoId = this.lud.utenteId
       this.pazienteId = parseInt(this.route.snapshot.queryParamMap.get("pazienteId")!)
 
     }
