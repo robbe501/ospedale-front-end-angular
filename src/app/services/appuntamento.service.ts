@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { PostAppuntamento } from '../interfaces/post-appuntamento';
-import { Time } from '@angular/common';
 import { PatchAppuntamento } from '../interfaces/patch-appuntamento';
+import { PostAppuntamento } from '../interfaces/post-appuntamento';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +48,12 @@ export class AppuntamentoService {
 
   async getByMedicoId(medicoId: number){
     const response = await fetch(`${this.ENDPOINT}appuntamenti/medico/${medicoId}`)
+    const json = await response.json();
+    return await json.reverse();
+  }
+
+  async get(){
+    const response = await fetch(`${this.ENDPOINT}appuntamenti`)
     const json = await response.json();
     return await json.reverse();
   }

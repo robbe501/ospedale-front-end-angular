@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoggedUserDataService } from 'src/app/services/logged-user-data.service';
 
@@ -7,7 +7,7 @@ import { LoggedUserDataService } from 'src/app/services/logged-user-data.service
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent implements OnChanges{
+export class SidebarComponent{
   @Input()
   user = "paziente";
   items = ["Prestazioni", "Appuntamenti", "Richieste"];
@@ -73,21 +73,39 @@ export class SidebarComponent implements OnChanges{
         else if (this.lud.tipologiaUtenteLoggato == "dipendente") {
           this.dati = this.datidDipendente;
         }
+        this.lud.logged.subscribe((data: string) => {
+          if(data == "paziente") {
+            this.dati = this.datiPaziente;
+            this.router.navigate(['']);
+          }
+          else if (data == "medico") {
+            this.dati = this.datiMedico;
+            this.router.navigate(['']);
+          }
+          else if (data == "dipendente") {
+            this.dati = this.datidDipendente;
+            this.router.navigate(['']);
+          }
+          else {
+            this.dati = [];
+            this.router.navigate(['']);
+          }
+        });
 
       }
 
-      ngOnChanges() {
+      /*ngOnChanges() {
         if(this.lud.tipologiaUtenteLoggato == "paziente") {
           this.dati = this.datiPaziente;
-          this.router.navigate(['']);
+          //this.router.navigate(['']);
         }
         else if (this.lud.tipologiaUtenteLoggato == "medico") {
           this.dati = this.datiMedico;
-          this.router.navigate(['']);
+          //this.router.navigate(['']);
         }
         else if (this.lud.tipologiaUtenteLoggato == "dipendente") {
           this.dati = this.datidDipendente;
-          this.router.navigate(['']);
+          //this.router.navigate(['']);
         }
-      }
+      }*/
 }

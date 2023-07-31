@@ -9,7 +9,7 @@ export function isAuth(role: string): CanActivateFn {
     if(lud.hasRole(role)) {
       return true;
     }
-    router.navigate(['/']);
+    router.navigate(['login']);
     return false;
   }
 };

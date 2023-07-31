@@ -1,0 +1,15 @@
+<div class=" w-5/12 mx-auto mt-5" >
+  <h1>Login</h1>
+  <mat-form-field class="example-full-width block">
+    <mat-label>Id</mat-label>
+    <input matInput type="number" value="" #id>
+  </mat-form-field>
+
+  <select #role class="mb-2 w-full h-12 bg-[#d7e5f5] rounded">
+    <option value="medico">Medico</option>
+    <option value="dipendente">Dipendente</option>
+    <option value="paziente">Paziente</option>
+  </select>
+
+  <button mat-raised-button class="bg-[#3695eb] text-white w-full" (click)="login(id.value, role.value)">Login</button>
+</div>

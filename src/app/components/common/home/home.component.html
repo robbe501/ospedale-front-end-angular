@@ -1,1 +1,2 @@
-<h1 class="mt-[15px] ml-[15px]">Loggato come <b>{{tipoUtente}}</b> con Id <b>{{idUtente}}</b></h1>
+<h1 class="mt-[15px] ml-[15px]" *ngIf="!isLoggedIn()">Effettua il login per continuare.</h1>
+<h1 class="mt-[15px] ml-[15px]" *ngIf="isLoggedIn()">Login Effettuato</h1>

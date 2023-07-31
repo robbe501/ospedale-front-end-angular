@@ -5,6 +5,7 @@ import { HomeComponent } from './components/common/home/home.component';
 import { DipendenteHomeComponent } from './components/dipendente/dipendente-home/dipendente-home.component';
 import { MedicoHomeComponent } from './components/medico/medico-home/medico-home.component';
 import { PazienteHomeComponent } from './components/paziente/paziente-home/paziente-home.component';
+import { LoginComponent } from './components/common/login/login.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'medici', canActivate: [isAuth('medico')], component: MedicoHomeComponent, loadChildren: () => import("./modules/medico/medico.module").then(m => m.MedicoModule)},
   { path: 'dipendenti', canActivate: [isAuth('dipendente')], component: DipendenteHomeComponent, loadChildren: () => import("./modules/dipendente/dipendente.module").then(m => m.DipendenteModule)},
   { path: '', component: HomeComponent},
+  { path: 'login', component: LoginComponent},
 
 ];
 

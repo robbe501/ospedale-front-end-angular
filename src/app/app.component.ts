@@ -16,4 +16,12 @@ export class AppComponent {
   changeUser(user: string) {
     this.lud.tipologiaUtenteLoggato = user;
   }
+
+  isLoggedIn(){
+    return this.lud.isLoggedIn();
+  }
+
+  logout() {
+    this.lud.logout();
+  }
 }

@@ -9,7 +9,7 @@ import { LoggedUserDataService } from 'src/app/services/logged-user-data.service
   styleUrls: ['./appuntamenti.component.css']
 })
 export class AppuntamentiComponent {
-  displayedColumns: string[] = []
+  displayedColumns: string[] = [];
   dataSource: GetAppuntamento[] = [];
   dataToFilter: GetAppuntamento[] = []
 
@@ -21,16 +21,19 @@ export class AppuntamentiComponent {
 
   async loadData() {
     if(this.lud.tipologiaUtenteLoggato == 'paziente') {
-      this.dataSource = await this.appuntamentoService.getByPazienteId(this.lud.utenteId);
       this.displayedColumns = ['tipologia', 'data', 'orario', 'medico', 'stato', 'richiesta'];
+      this.dataSource = await this.appuntamentoService.getByPazienteId(this.lud.utenteId);
+
     }
     else if (this.lud.tipologiaUtenteLoggato == 'medico') {
-      this.dataSource = await this.appuntamentoService.getByMedicoId(this.lud.utenteId);
       this.displayedColumns = ['tipologia', 'data', 'orario', 'paziente', 'stato', 'richiesta', 'effettuato'];
+      this.dataSource = await this.appuntamentoService.getByMedicoId(this.lud.utenteId);
+
     }
     else if (this.lud.tipologiaUtenteLoggato == 'dipendente') {
-      this.dataSource = await this.appuntamentoService.getByMedicoId(this.lud.utenteId);
       this.displayedColumns = ['tipologia', 'data', 'orario', 'medico', 'paziente', 'stato'];
+      this.dataSource = await this.appuntamentoService.get();
+
     }
     this.dataToFilter = this.dataSource;
   }
