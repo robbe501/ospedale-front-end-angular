@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PostRichiesta } from '../interfaces/post-richiesta';
+import { GetRichiesta } from '../interfaces/get-richiesta';
 import { PatchRichiesta } from '../interfaces/patch-richiesta';
+import { PostRichiesta } from '../interfaces/post-richiesta';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +10,9 @@ import { PatchRichiesta } from '../interfaces/patch-richiesta';
 export class RichiestaService {
   ENDPOINT: string = "http://localhost:8080/api/v1/";
 
-  constructor() { }
-  async post(nuovaData: string, nuovoOrario: string, pazienteId: number, medicoId: number, appuntamentoId:number) {
+  constructor(private http: HttpClient) { }
+
+  post(nuovaData: string, nuovoOrario: string, pazienteId: number, medicoId: number, appuntamentoId:number) {
 
     var postRichiesta: PostRichiesta = {
       stato: "attesa",
@@ -19,62 +22,25 @@ export class RichiestaService {
       medicoId: medicoId,
       appuntamentoId: appuntamentoId
     }
-
-
-    const requestOptions: RequestInit = {
-      method: 'POST',
-      mode: "cors",
-      body: JSON.stringify(postRichiesta),
-      headers: {
-          "Content-Type": "application/json"
-      }
-    };
-
-    const response = await fetch(`${this.ENDPOINT}richieste`, requestOptions);
-      if(response.ok) {
-        const json = await response.json();
-        return json;
-      }
-      return response.status
+    return this.http.post<PostRichiesta>(`${this.ENDPOINT}richieste`, postRichiesta);
   }
-  async getByPazienteId(pazienteId:number){
-    const response = await fetch(`${this.ENDPOINT}richieste/paziente/${pazienteId}`);
-    const json = await response.json();
-    return json.reverse()
+  getByPazienteId(pazienteId:number){
+    return this.http.get<GetRichiesta[]>(`${this.ENDPOINT}richieste/paziente/${pazienteId}`);
   }
-  async getByMedicoId(medicoId:number){
-    const response = await fetch(`${this.ENDPOINT}richieste/medico/${medicoId}`);
-    const json = await response.json();
-    return json.reverse()
+  getByMedicoId(medicoId:number){
+    return this.http.get<GetRichiesta[]>(`${this.ENDPOINT}richieste/medico/${medicoId}`);
   }
-  async get(){
-    const response = await fetch(`${this.ENDPOINT}richieste`);
-    const json = await response.json();
-    return json.reverse()
+  get(){
+    return this.http.get<GetRichiesta[]>(`${this.ENDPOINT}richieste`);
   }
 
-  async patch(richiestaId: number, accetta: boolean) {
+  patch(richiestaId: number, accetta: boolean) {
 
     var patchRichiesta: PatchRichiesta = {
       richiestaId: richiestaId,
       stato: accetta? "accettato" : "rifiutato"
     }
 
-
-    const requestOptions: RequestInit = {
-      method: 'PATCH',
-      mode: "cors",
-      body: JSON.stringify(patchRichiesta),
-      headers: {
-          "Content-Type": "application/json"
-      }
-    };
-
-    const response = await fetch(`${this.ENDPOINT}richieste`, requestOptions);
-      if(response.ok) {
-        const json = await response.json();
-        return json;
-      }
-      return response.status
+    return this.http.patch<PatchRichiesta>(`${this.ENDPOINT}richieste`, patchRichiesta);
   }
 }

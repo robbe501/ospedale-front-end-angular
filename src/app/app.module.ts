@@ -1,3 +1,4 @@
+import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -16,8 +17,11 @@ import { AppComponent } from './app.component';
 import { AppuntamentiComponent } from './components/common/appuntamenti/appuntamenti.component';
 import { FormRichiestaComponent } from './components/common/form-richiesta/form-richiesta.component';
 import { HomeComponent } from './components/common/home/home.component';
+import { LoginComponent } from './components/common/login/login.component';
+import { NavbarComponent } from './components/common/navbar/navbar.component';
 import { PrestazioniComponent } from './components/common/prestazioni/prestazioni.component';
 import { RichiesteComponent } from './components/common/richieste/richieste.component';
+import { SidebarComponent } from './components/common/sidebar/sidebar.component';
 import { DipendenteHomeComponent } from './components/dipendente/dipendente-home/dipendente-home.component';
 import { FormInsertMedicoComponent } from './components/dipendente/form-insert-medico/form-insert-medico.component';
 import { FormInsertPrestazioneComponent } from './components/dipendente/form-insert-prestazione/form-insert-prestazione.component';
@@ -27,8 +31,6 @@ import { MedicoHomeComponent } from './components/medico/medico-home/medico-home
 import { AppuntamentiPazienteComponent } from './components/paziente/appuntamenti-paziente/appuntamenti-paziente.component';
 import { FormAppuntamentoComponent } from './components/paziente/form-appuntamento/form-appuntamento.component';
 import { PazienteHomeComponent } from './components/paziente/paziente-home/paziente-home.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { LoginComponent } from './components/common/login/login.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { LoginComponent } from './components/common/login/login.component';
     DipendenteHomeComponent,
     MedicoHomeComponent,
     LoginComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ import { LoginComponent } from './components/common/login/login.component';
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
+    HttpClientModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

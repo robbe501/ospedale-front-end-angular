@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { GetAppuntamento } from 'src/app/interfaces/get-appuntamento';
 import { AppuntamentoService } from 'src/app/services/appuntamento.service';
 import { LoggedUserDataService } from 'src/app/services/logged-user-data.service';
@@ -8,43 +9,59 @@ import { LoggedUserDataService } from 'src/app/services/logged-user-data.service
   templateUrl: './appuntamenti.component.html',
   styleUrls: ['./appuntamenti.component.css']
 })
-export class AppuntamentiComponent {
+export class AppuntamentiComponent implements OnDestroy {
   displayedColumns: string[] = [];
   dataSource: GetAppuntamento[] = [];
   dataToFilter: GetAppuntamento[] = []
 
+  getByPazienteId$!: Subscription;
+  getByMedicoId$!: Subscription;
+  get$!: Subscription;
+  patch$!: Subscription;
+
   constructor(private appuntamentoService: AppuntamentoService, private lud: LoggedUserDataService) {
   }
-  async ngOnInit() {
+  ngOnInit() {
     this.loadData();
   }
 
-  async loadData() {
+  loadData() {
     if(this.lud.tipologiaUtenteLoggato == 'paziente') {
       this.displayedColumns = ['tipologia', 'data', 'orario', 'medico', 'stato', 'richiesta'];
-      this.dataSource = await this.appuntamentoService.getByPazienteId(this.lud.utenteId);
+      this.getByPazienteId$ = this.appuntamentoService.getByPazienteId(this.lud.utenteId).subscribe((data) => {
+        this.dataSource = data;
+        this.dataToFilter = this.dataSource;
+      });
 
     }
-    else if (this.lud.tipologiaUtenteLoggato == 'medico') {
+   else if (this.lud.tipologiaUtenteLoggato == 'medico') {
       this.displayedColumns = ['tipologia', 'data', 'orario', 'paziente', 'stato', 'richiesta', 'effettuato'];
-      this.dataSource = await this.appuntamentoService.getByMedicoId(this.lud.utenteId);
+      this.getByMedicoId$ = this.appuntamentoService.getByMedicoId(this.lud.utenteId).subscribe((data) => {
+        this.dataSource = data;
+        this.dataToFilter = this.dataSource;
+      });
 
     }
     else if (this.lud.tipologiaUtenteLoggato == 'dipendente') {
       this.displayedColumns = ['tipologia', 'data', 'orario', 'medico', 'paziente', 'stato'];
-      this.dataSource = await this.appuntamentoService.get();
+      this.get$ = this.appuntamentoService.get().subscribe((data) => {
+        this.dataSource = data;
+        this.dataToFilter = this.dataSource;
+      });
 
     }
-    this.dataToFilter = this.dataSource;
+
   }
 
   getUser() {
     return this.lud.tipologiaUtenteLoggato;
   }
 
-  async cambiaStato(stato: 'Effettuato' | 'Prenotato', appuntamentoId: number) {
-    await this.appuntamentoService.patch(stato, appuntamentoId);
-    this.loadData();
+  cambiaStato(stato: 'Effettuato' | 'Prenotato', appuntamentoId: number) {
+    this.patch$ = this.appuntamentoService.patch(stato, appuntamentoId).subscribe(() => {
+      this.loadData()
+    });
+
   }
 
   filtraData(data: string) {
@@ -58,5 +75,20 @@ export class AppuntamentiComponent {
 
   controllaData(data: string) {
     return new Date(data) >= new Date()
+  }
+
+  ngOnDestroy() {
+    if(this.getByPazienteId$) {
+      this.getByPazienteId$.unsubscribe();
+    }
+    if(this.getByMedicoId$) {
+      this.getByMedicoId$.unsubscribe();
+    }
+    if(this.get$) {
+      this.get$.unsubscribe();
+    }
+    if(this.patch$) {
+      this.patch$.unsubscribe();
+    }
   }
 }

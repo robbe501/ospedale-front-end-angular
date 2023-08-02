@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { GetPrestazione } from '../interfaces/get-prestazione';
 import { PatchPrestazione } from '../interfaces/patch-prestazione';
 import { PostPrestazione } from '../interfaces/post-prestazione';
 
@@ -9,62 +11,29 @@ export class PrestazioneService {
 
   ENDPOINT: string = "http://localhost:8080/api/v1/";
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  async get(){
-    const response = await fetch(`${this.ENDPOINT}prestazioni`)
-    const json = await response.json();
-    return await json.reverse();
+  get(){
+    return this.http.get<GetPrestazione[]>(`${this.ENDPOINT}prestazioni`);
   }
 
-  async patch(prestazioneId: number, medicoId: number) {
+  patch(prestazioneId: number, medicoId: number) {
 
     var patchPrestazione: PatchPrestazione = {
       prestazioneId: prestazioneId,
       medicoId: medicoId
     }
 
-
-    const requestOptions: RequestInit = {
-      method: 'PATCH',
-      mode: "cors",
-      body: JSON.stringify(patchPrestazione),
-      headers: {
-          "Content-Type": "application/json"
-      }
-    };
-
-    const response = await fetch(`${this.ENDPOINT}prestazioni`, requestOptions);
-      if(response.ok) {
-        const json = await response.json();
-        return json;
-      }
-      return response.status
+    return this.http.patch<PatchPrestazione>(`${this.ENDPOINT}prestazioni`, patchPrestazione);
   }
 
-  async post(tipologia: string, medicoId: number) {
+  post(tipologia: string, medicoId: number) {
 
     var postPrestazione: PostPrestazione = {
       tipologia: tipologia,
       medicoId: medicoId
     }
 
-    console.log(postPrestazione)
-
-    const requestOptions: RequestInit = {
-      method: 'POST',
-      mode: "cors",
-      body: JSON.stringify(postPrestazione),
-      headers: {
-          "Content-Type": "application/json"
-      }
-    };
-
-    const response = await fetch(`${this.ENDPOINT}prestazioni`, requestOptions);
-      if(response.ok) {
-        const json = await response.json();
-        return json;
-      }
-      return response.status
+    return this.http.post<PostPrestazione>(`${this.ENDPOINT}prestazioni`, postPrestazione);
   }
 }

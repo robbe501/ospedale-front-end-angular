@@ -16,19 +16,22 @@ export class MediciComponent {
   constructor(private medicoService: MedicoService) {
   }
 
-  async ngOnInit() {
-    this.dataSource = await this.medicoService.get();
+  ngOnInit() {
+    this.medicoService.get().subscribe((data) => {
+      this.dataSource = data;
+    });
   }
 
-  async cambiaAbilitato(medicoId: string, abilitato: EventTarget) {
-    await this.medicoService.patch(parseInt(medicoId), (abilitato as HTMLInputElement).checked);
+  cambiaAbilitato(medicoId: string, abilitato: EventTarget) {
+    this.medicoService.patch(parseInt(medicoId), (abilitato as HTMLInputElement).checked).subscribe();
   }
 
-  async licenzia(medicoId: string) {
-    try {
-      await this.medicoService.delete(parseInt(medicoId));
-    } catch (error) {
-    }
-    this.dataSource = await this.medicoService.get();
+  licenzia(medicoId: string) {
+    this.medicoService.delete(parseInt(medicoId)).subscribe(() => {
+      this.medicoService.get().subscribe((data) => {
+        this.dataSource = data;
+      });
+    });
+
   }
 }

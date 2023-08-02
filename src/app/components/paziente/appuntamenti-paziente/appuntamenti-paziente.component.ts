@@ -1,27 +1,33 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { GetAppuntamento } from 'src/app/interfaces/get-appuntamento';
-import { GetPrestazione } from 'src/app/interfaces/get-prestazione';
 import { AppuntamentoService } from 'src/app/services/appuntamento.service';
 import { LoggedUserDataService } from 'src/app/services/logged-user-data.service';
-import { PrestazioneService } from 'src/app/services/prestazione.service';
 
 @Component({
   selector: 'app-appuntamenti-paziente',
   templateUrl: './appuntamenti-paziente.component.html',
   styleUrls: ['./appuntamenti-paziente.component.css']
 })
-export class AppuntamentiPazienteComponent {
+export class AppuntamentiPazienteComponent implements OnDestroy {
+
+  getByPazienteId$!: Subscription;
 
   displayedColumns: string[] = ['tipologia', 'data', 'orario', 'medico', 'richiesta'];
   dataSource: GetAppuntamento[] = [];
 
   constructor(private appuntamentoService: AppuntamentoService, private lud: LoggedUserDataService) {
   }
-  async ngOnInit() {
-    this.dataSource = await this.appuntamentoService.getByPazienteId(this.lud.utenteId);
+  ngOnInit() {
+    this.getByPazienteId$ = this.appuntamentoService.getByPazienteId(this.lud.utenteId).subscribe((data) => {
+      this.dataSource = data;
+    });
 
   }
 
-
+  ngOnDestroy() {
+    if(this.getByPazienteId$) {
+      this.getByPazienteId$.unsubscribe();
+    }
+  }
 }
